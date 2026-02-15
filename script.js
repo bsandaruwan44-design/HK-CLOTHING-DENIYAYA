@@ -11,10 +11,10 @@ const initialProducts = [
     {
         id: 2,
         name: "Cozy Knit Sweater Set",
-        price: 4850.50,
+        price: 4850.00,
         image: "https://images.unsplash.com/photo-1544126592-807daa2b56fd?auto=format&fit=crop&q=80&w=400",
         category: "Toddlers",
-        colors: ["Pink", "White"]
+        colors: ["Pink", "White", "Beige"]
     },
     {
         id: 3,
@@ -30,7 +30,23 @@ const initialProducts = [
         price: 1950.00,
         image: "https://images.unsplash.com/photo-1515488404392-49a23cb39598?auto=format&fit=crop&q=80&w=400",
         category: "Newborn",
-        colors: ["White", "Blue"]
+        colors: ["White", "Blue", "Pink"]
+    },
+    {
+        id: 5,
+        name: "Floral Summer Dress",
+        price: 3200.00,
+        image: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&q=80&w=400",
+        category: "Toddlers",
+        colors: ["Pink", "White", "Yellow"]
+    },
+    {
+        id: 6,
+        name: "Soft Sole Booties",
+        price: 1250.00,
+        image: "https://images.unsplash.com/photo-1519457431-75514b723b69?auto=format&fit=crop&q=80&w=400",
+        category: "Accessories",
+        colors: ["Pink", "Blue", "White"]
     }
 ];
 
@@ -280,7 +296,17 @@ function saveProducts() {
     renderAdminTable();
 }
 
+const ADMIN_PASSWORD = "HK_ADMIN_2024";
+
 function toggleAdminModal() {
+    if (document.getElementById('admin-modal').style.display !== 'flex') {
+        const password = prompt("Please enter Admin Password to access Management Mode:");
+        if (password !== ADMIN_PASSWORD) {
+            alert("Incorrect password! Access denied.");
+            return;
+        }
+    }
+
     const modal = document.getElementById('admin-modal');
     modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
     if (modal.style.display === 'flex') renderAdminTable();
